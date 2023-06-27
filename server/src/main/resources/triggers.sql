@@ -1,0 +1,24 @@
+
+-- BEGIN TRIGGER LIST
+
+CREATE TRIGGER CrewBackupTrigger
+AFTER DELETE ON crew
+FOR EACH ROW
+EXECUTE FUNCTION BackupDeletedCrew();
+
+CREATE TRIGGER InsertMissionReportTrigger
+INSTEAD OF INSERT ON MissionReport
+FOR EACH ROW
+EXECUTE PROCEDURE InsertMissionReport();
+
+CREATE TRIGGER DeleteCrewMissionTrigger
+AFTER DELETE ON crew_mission
+FOR EACH ROW
+EXECUTE PROCEDURE DeleteCrewMission();
+
+CREATE TRIGGER InsertCrewMissionTrigger
+AFTER INSERT ON crew_mission
+FOR EACH ROW
+EXECUTE PROCEDURE InsertCrewMission();
+
+-- END TRIGGER LIST

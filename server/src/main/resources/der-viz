@@ -1,0 +1,66 @@
+graph ER {
+	fontname="Helvetica,Arial,sans-serif"
+	node [fontname="Helvetica,Arial,sans-serif"]
+	edge [fontname="Helvetica,Arial,sans-serif"]
+	layout=neato
+	node [shape=box]; department; crew; planet; resource; resource_type; ship; mission;
+	node [shape=ellipse]; {node [label="name"]}
+ department_name;
+ active_status; date_birth; date_joined; first_name; last_name; rank; species;
+ diameter; planet_name; orbital_period; planet_type; star_system; surface_temp;
+ resource_name; quantity; unit_cost;
+ resource_type_name;
+ level; max_crew_size; ship_name;
+ end_date; mission_status; mission_name; start_date;
+	node [shape=ellipse,style=filled,color=lightgrey]; {node [label="name"]}
+	department_id;crew_id;resource_id;resource_type_id;ship_id;mission_id;planet_id;
+	node [shape=diamond,style=filled,color=lightgrey];
+
+    department_id -- department;
+    department_name -- department;
+    crew_id -- crew;
+    active_status -- crew;
+    date_birth -- crew;
+    date_joined -- crew;
+    first_name -- crew;
+    last_name -- crew;
+    rank -- crew;
+    species -- crew;
+    planet_id -- planet;
+    diameter -- planet;
+    planet_name -- planet;
+    orbital_period -- planet;
+    planet_type -- planet;
+    star_system -- planet;
+    surface_temp -- planet;
+    resource_id -- resource;
+    resource_name -- resource;
+    quantity -- resource;
+    unit_cost -- resource;
+    resource_type_id -- resource_type;
+    resource_type_name -- resource_type;
+    ship_id -- ship;
+    level -- ship;
+    max_crew_size -- ship;
+    ship_name -- ship;
+    mission_id -- mission;
+    end_date -- mission;
+    mission_status -- mission;
+    mission_name -- mission;
+    start_date -- mission;
+
+    department -- "has" [label="(1,1)",len=2.00];
+    "has" -- crew [label="(0,n)",len=2.00];
+    crew -- "constitute"[label="(0,n)",len=2.00];
+    mission -- "constitute"[label="(0,n)",len=2.00];
+    planet -- "located"[label="(1,1)",len=2.00];
+    mission -- "located"[label="(0,n)",len=2.00];
+    resource -- "found"[label="(0,n)",len=1.00];
+    mission -- "found"[label="(0,n)",len=1.00];
+    resource_type_name -- "at"[label="(1,1)",len=2.00];
+    resource -- "at"[label="(0,n)",len=2.00];
+    ship -- "it has"[label="(1,1)",len=1.00];
+    mission -- "it has"[label="(0,n)",len=1.00];
+    ship -- "command"[label="(0,n)",len=2.00];
+    crew -- "command"[label="(1,1)",len=2.00];
+}

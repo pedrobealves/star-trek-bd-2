@@ -1,0 +1,79 @@
+erDiagram
+    department {
+        BIGSERIAL id PK
+        VARCHAR(255) name
+    }
+
+    crew {
+        BIGSERIAL id PK
+        BOOLEAN active_status
+        DATE date_birth
+        DATE date_joined
+        VARCHAR(255) first_name
+        VARCHAR(255) last_name
+        INTEGER rank
+        VARCHAR(255) species
+        BIGINT department_id FK
+    }
+
+    planet {
+        BIGSERIAL id PK
+        INTEGER diameter
+        VARCHAR(255) name
+        DOUBLE_PRECISION orbital_period
+        VARCHAR(255) planet_type
+        VARCHAR(255) star_system
+        INTEGER surface_temp
+    }
+
+    resource {
+        BIGSERIAL id PK
+        VARCHAR(255) name
+        INTEGER quantity
+        NUMERIC unit_cost
+        BIGINT  type_id FK
+    }
+
+    resource_type {
+        BIGSERIAL id PK
+        VARCHAR(255) name
+    }
+
+    ship {
+        BIGSERIAL id PK
+        INTEGER level
+        INTEGER max_crew_size
+        VARCHAR(255) name
+        BIGINT captain_id FK
+    }
+
+    mission {
+        BIGSERIAL id PK
+        DATE end_date
+        VARCHAR(255) mission_status
+        VARCHAR(255) name
+        DATE start_date
+        BIGINT planet_id FK
+        BIGINT ship_id FK
+    }
+
+    crew_mission {
+        BIGINT crew_id PK,FK
+        BIGINT mission_id PK,FK
+    }
+
+    resource_mission {
+        BIGINT resource_id PK,FK
+        BIGINT mission_id PK,FK
+    }
+
+    department ||..o{ crew : "1"
+    crew ||--o{ crew_mission : "1"
+    crew_mission o{-- || mission : "1"
+    planet ||..o{ mission : "1"
+    ship ||..o{ mission : "1"
+    crew ||..o| ship : "1"
+    resource ||--o{ resource_mission : "1"
+    mission ||--o{ resource_mission : "1"
+    resource o{..|| resource_type : "1"
+

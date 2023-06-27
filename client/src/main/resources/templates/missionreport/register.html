@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" xmlns:layout="" xmlns:th="http://www.w3.org/1999/xhtml">
+<head><meta charset="UTF-8"/></head>
+<body>
+
+	    <section class="layout-content" layout:fragment="corpo">
+	        <div class="page-header">
+	            <nav class="navbar navbar-expand-md navbar-top bg-light">
+	                <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+	                    <ul class="navbar-nav">
+							<li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+							<li class="breadcrumb-item active" aria-current="page">Cadastrar relatório de missão</li>	                        </li>
+	                    </ul>
+	                </div>
+	                <a th:href="@{/relatorio-missao/listar}" role="button">
+						<button type="button" class="btn btn-outline-primary">
+							<span class="oi oi-spreadsheet" title="Cadastro" aria-hidden="true"></span>
+							<span class="ml-1">Listar Relatório de Missões</span>
+						</button>
+					</a>
+	            </nav>
+	        </div>
+
+	        <div class="container" id="cadastro">
+
+	        	<div th:replace="fragments/alert"></div>
+
+	            <form th:action="@{/relatorio-missao/salvar}"
+	                  th:object="${missionReport}" method="POST">
+
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="nome">Nome da missão</label>
+							<input type="text" class="form-control" id="nome" placeholder="Nome" required
+								   autofocus="autofocus" th:field="*{missionName}" />
+						</div>
+						<div class="form-group col-md-6">
+							<label for="captainName">Nome do capitão</label>
+							<input class="form-control" list="datalistOptionsCrews" id="captainName" placeholder="Type to search..." required
+								 th:field="*{captainName}">
+							<datalist id="datalistOptionsCrews">
+								<option th:each="crew : ${crews}" th:value="${crew.firstName + ' ' + crew.lastName}" th:text="${crew.firstName + ' ' + crew.lastName}"></option>
+							</datalist>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-4">
+							<label for="startDate">Data de inicio</label>
+							<input type="date" class="form-control" id="startDate" th:field="*{startDate}" required />
+						</div>
+						<div class="form-group col-md-4">
+							<label for="endDate">Data de término</label>
+							<input type="date" class="form-control" id="endDate" th:field="*{endDate}" required />
+						</div>
+						<div class="form-group col-md-4">
+							<label for="missionStatus">Estado</label>
+							<select id="missionStatus" class="form-control" th:field="*{missionStatus}" required>
+								<option value="">Selecione...</option>
+								<option th:each="stat : ${status}" th:value="${stat}" th:text="${stat}"></option>
+								</select>
+						</div>
+
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="shipName">Nave</label>
+							<input class="form-control" list="datalistOptionsShip" id="shipName" placeholder="Type to search..." required
+								 th:field="*{shipName}">
+							<datalist id="datalistOptionsShip">
+								<option th:each="ship : ${ships}" th:value="${ship.name}" th:text="${ship.name}"></option>
+							</datalist>
+						</div>
+						<div class="form-group col-md-6">
+							<label for="planetName">Planeta</label>
+							<input class="form-control" list="datalistOptionsPlanet" id="planetName" placeholder="Type to search..." required
+								 th:field="*{planetName}">
+							<datalist id="datalistOptionsPlanet">
+								<option th:each="planet : ${planets}" th:value="${planet.name}" th:text="${planet.name}"></option>
+							</datalist>
+						</div>
+					</div>
+					<input type="hidden" id="missionId" th:field="*{missionId}"/>
+					<button type="submit" class="btn btn-primary">Salvar</button>
+	            </form>
+	        </div>
+	    </section>
+</body>
+</html>		

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" th:src="@{/js/actions.js}"></script>
+</head>
+
+<body>
+
+    <section class="layout-content" layout:fragment="corpo">
+        <nav class="navbar navbar-expand-md bg-light">
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav">
+                    <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Lista de relatório de missão</li>
+                </ul>
+            </div>
+            <a th:href="@{/relatorio-missao/cadastrar}" role="button">
+                <button type="button" class="btn btn-outline-primary">
+                    <span class="oi oi-spreadsheet" title="Cadastro" aria-hidden="true"></span>
+                    <span class="ml-1">Cadastrar relatório de missão</span>
+                </button>
+            </a>
+        </nav>
+
+        <div class="container">
+            <div class="table-responsive">
+                <div th:replace="fragments/alert"></div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th th:text="#{table.missionreport.col.missionName}"></th>
+                            <th th:text="#{table.missionreport.col.startDate}"></th>
+                            <th th:text="#{table.missionreport.col.endDate}"></th>
+                            <th th:text="#{table.missionreport.col.missionStatus}"></th>
+                            <th th:text="#{table.missionreport.col.shipName}"></th>
+                            <th th:text="#{table.missionreport.col.planetName}"></th>
+                            <th th:text="#{table.missionreport.col.captainName}"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="p : ${missionreport}" style="cursor: pointer" th:some-field="${p.missionId}" onclick="rowClicked(this.getAttribute('some-field'))">
+                            <td th:text="${p.missionId}"></td>
+                            <td th:text="${p.missionName}"></td>
+                            <td th:text="${p.startDate}"></td>
+                            <td th:text="${p.endDate}"></td>
+                            <td th:text="${p.missionStatus}"></td>
+                            <td th:text="${p.shipName}"></td>
+                            <td th:text="${p.planetName}"></td>
+                            <td th:text="${p.captainName}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="d-flex justify-content-center">
+                    <ul class="pagination">
+                        <li class="page-item" th:class="${page == 1} ? 'disabled-link'">
+                            <a class="page-link" th:href="@{listar(page=${page-1})}">Anterior</a>
+                        </li>
+                        <li class="page-item" th:class="${page == 1} ? 'active'">
+                            <a class="page-link" th:href="@{listar(page=1)}">1</a>
+                        </li>
+                        <li class="page-item" th:each="pageNumber : ${#numbers.sequence(2, totalPages)}" th:class="${page == pageNumber} ? 'active'">
+                            <a class="page-link" th:href="@{listar(page=${pageNumber})}">
+                                <span th:text="${pageNumber}"></span>
+                            </a>
+                        </li>
+                        <li class="page-item" th:class="${page == totalPages} ? 'disabled-link'">
+                            <a class="page-link" th:href="@{listar(page=${page+1})}">Próximo</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div th:replace="fragments/modal :: modal"></div>
+    </section>
+</body>
+</html>

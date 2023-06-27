@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head><meta charset="UTF-8" />
+</head>
+<body>
+		
+	<section class="layout-content" layout:fragment="corpo">
+		<nav class="navbar navbar-expand-md bg-light">
+			<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+				<ul class="navbar-nav">
+					<li class="breadcrumb-item active"><a th:href="@{/}">Home</a></li>
+				</ul>
+			</div>
+		</nav>
+		
+		<div class="container">
+			<div id="list-home" class="row">
+				<div class="col-4">
+					<div class="list-group" id="list-tab" role="tablist">
+						<a class="list-group-item list-group-item-action active"
+							id="list-spring-boot-list" data-toggle="list" href="#spring-boot"
+							role="tab" aria-controls="spring-boot">Tripulação</a> <a
+							class="list-group-item list-group-item-action" id="list-sts-list"
+							data-toggle="list" href="#sts" role="tab" aria-controls="sts">Naves</a> <a class="list-group-item list-group-item-action"
+							id="list-thymeleaf-list" data-toggle="list" href="#thymeleaf"
+							role="tab" aria-controls="thymeleaf">Missões</a>
+					</div>
+				</div>
+				<div class="col-8">
+					<div class="tab-content" id="nav-tabContent">
+						<div class="tab-pane fade show active" id="spring-boot"
+							role="tabpanel" aria-labelledby="list-spring-boot-list">
+							Texto 1...
+						</div>
+						<div class="tab-pane fade" id="sts" role="tabpanel"
+							aria-labelledby="list-sts-list">
+							Texto 2...
+						</div>
+						<div class="tab-pane fade" id="thymeleaf" role="tabpanel"
+							aria-labelledby="list-thymeleaf-list">
+							Texto 3...
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</section>		
+</body>
+</html>

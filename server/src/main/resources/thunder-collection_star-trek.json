@@ -1,0 +1,223 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "star-trek",
+    "dateExported": "2023-06-19T02:31:44.088Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "2f375614-f39a-46b2-8f87-c2ad07283366",
+            "colId": "b5b0c3e5-5bf0-4729-b37a-6557bf15da18",
+            "containerId": "",
+            "name": "ActiveCrewsByDep",
+            "url": "/departments/Ciência/active-crews",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-06-14T23:17:55.747Z",
+            "modified": "2023-06-19T00:29:50.612Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "d5d067f3-e2c7-4e54-9a29-9570c34722e4",
+            "colId": "b5b0c3e5-5bf0-4729-b37a-6557bf15da18",
+            "containerId": "",
+            "name": "MissionReport",
+            "url": "/missions/report",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-06-14T23:18:57.618Z",
+            "modified": "2023-06-16T17:15:26.291Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "501918ce-6d18-4a11-b440-8fd154a48ed5",
+            "colId": "b5b0c3e5-5bf0-4729-b37a-6557bf15da18",
+            "containerId": "",
+            "name": "NewMissionReport",
+            "url": "/missions/report",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2023-06-14T23:37:36.522Z",
+            "modified": "2023-06-16T17:16:15.311Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"missionName\": \"Nome da Missão\",\n    \"startDate\": \"2023-06-14\",\n    \"endDate\": \"2023-06-15\",\n    \"missionStatus\": \"Concluída\",\n    \"shipName\": \"Nome da Nave\",\n    \"planetName\": \"Nome do Pl\",\n    \"captainName\": \"Nome Cap\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "b9d37091-eb3b-4e15-8e80-3cca0a2d5d16",
+            "colId": "b5b0c3e5-5bf0-4729-b37a-6557bf15da18",
+            "containerId": "",
+            "name": "ShipCrewMissionCount",
+            "url": "/ships/crew-mission-count?numberMissions=0&numberCrews=0",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2023-06-15T01:19:37.927Z",
+            "modified": "2023-06-16T17:16:24.589Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "numberMissions",
+                    "value": "0",
+                    "isPath": false
+                },
+                {
+                    "name": "numberCrews",
+                    "value": "0",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "6c0123ab-a2d1-4f08-a9e0-0588028a3d3f",
+            "colId": "b5b0c3e5-5bf0-4729-b37a-6557bf15da18",
+            "containerId": "",
+            "name": "DeleteCrewMission",
+            "url": "/missions/crew-mission/138/1",
+            "method": "DELETE",
+            "sortNum": 60000,
+            "created": "2023-06-15T21:13:41.113Z",
+            "modified": "2023-06-16T17:16:29.269Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "f34e988b-9b9f-482d-abac-c6c6d5d6282d",
+            "colId": "b5b0c3e5-5bf0-4729-b37a-6557bf15da18",
+            "containerId": "",
+            "name": "ProficiencyDep",
+            "url": "/departments/proficiency",
+            "method": "GET",
+            "sortNum": 80000,
+            "created": "2023-06-16T17:14:31.133Z",
+            "modified": "2023-06-16T17:16:00.475Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "30cc9ccc-7b1f-44be-b5b3-6149ba0b10f5",
+            "colId": "b5b0c3e5-5bf0-4729-b37a-6557bf15da18",
+            "containerId": "",
+            "name": "StatusMission",
+            "url": "/missions/status",
+            "method": "GET",
+            "sortNum": 90000,
+            "created": "2023-06-16T17:16:49.174Z",
+            "modified": "2023-06-16T17:17:08.753Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "2cfcf4a4-d9a0-41bd-9271-9f61c1b97454",
+            "colId": "b5b0c3e5-5bf0-4729-b37a-6557bf15da18",
+            "containerId": "",
+            "name": "AllCrews",
+            "url": "/crews",
+            "method": "GET",
+            "sortNum": 100000,
+            "created": "2023-06-16T20:27:33.980Z",
+            "modified": "2023-06-16T20:51:00.352Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "bb181dd3-fc42-4b12-a676-03806ff6e09c",
+            "colId": "b5b0c3e5-5bf0-4729-b37a-6557bf15da18",
+            "containerId": "",
+            "name": "AllPlanets",
+            "url": "/planets",
+            "method": "GET",
+            "sortNum": 110000,
+            "created": "2023-06-16T20:51:13.075Z",
+            "modified": "2023-06-16T20:51:25.924Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "e1a9a5d8-cc10-48a6-a4b0-5e631ea07b02",
+            "colId": "b5b0c3e5-5bf0-4729-b37a-6557bf15da18",
+            "containerId": "",
+            "name": "AllShips",
+            "url": "/ships",
+            "method": "GET",
+            "sortNum": 120000,
+            "created": "2023-06-16T20:52:18.568Z",
+            "modified": "2023-06-16T20:52:31.797Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "1313680c-4ab4-481f-a79b-0361f6c2656b",
+            "colId": "b5b0c3e5-5bf0-4729-b37a-6557bf15da18",
+            "containerId": "",
+            "name": "AllMissions",
+            "url": "/missions",
+            "method": "GET",
+            "sortNum": 130000,
+            "created": "2023-06-17T19:32:28.680Z",
+            "modified": "2023-06-17T19:32:38.566Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "0bfc2a27-b07a-4fff-982a-fda49c0eefa7",
+            "colId": "b5b0c3e5-5bf0-4729-b37a-6557bf15da18",
+            "containerId": "",
+            "name": "GetMissionById",
+            "url": "/missions/50/crews",
+            "method": "GET",
+            "sortNum": 140000,
+            "created": "2023-06-18T01:13:18.085Z",
+            "modified": "2023-06-18T21:19:50.586Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "c97297b1-722e-48dd-8be4-aa7e45d31f75",
+            "colId": "b5b0c3e5-5bf0-4729-b37a-6557bf15da18",
+            "containerId": "",
+            "name": "d",
+            "url": "/ships/crew-mission-count?numberCrews=0&numberMissions=0",
+            "method": "GET",
+            "sortNum": 160000,
+            "created": "2023-06-19T01:25:21.198Z",
+            "modified": "2023-06-19T01:25:33.855Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "numberCrews",
+                    "value": "0",
+                    "isPath": false
+                },
+                {
+                    "name": "numberMissions",
+                    "value": "0",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        }
+    ],
+    "settings": {
+        "options": {
+            "baseUrl": "localhost:8081/api"
+        }
+    }
+}

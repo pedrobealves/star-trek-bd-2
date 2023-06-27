@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <section class="layout-content" layout:fragment="corpo">
+        <nav class="navbar navbar-expand-md bg-light">
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav">
+                    <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Tripulantes e recursos usados por departamento</li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container pb-3">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Selecione o departamento
+            </button>
+            <div class="dropdown-menu" th:field="*{proficiency}" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" th:each="profy : ${proficiency}" th:value="${profy}" th:text="${profy}" th:href="@{listar(name=${profy})}">Action</a>
+            </div>
+          </div>
+        </div>
+
+        <div th:if="${DepartmentActiveCrewBy != null}" class="container">
+        <div class="container">
+          <h2 class="pb-3" th:text="${DepartmentActiveCrewBy.departmentName}">Engenharia</h2>
+          <div class="row row-cols-md-2">
+            <div class="col-3">
+              <div class="card" style="width: 15rem;">
+                <div class="card-body">
+                  <h6 class="card-title">Tripulantes ativos</h6>
+                  <h1 th:text="${DepartmentActiveCrewBy.activeCrewCount}">1000</h1>
+                </div>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="card" style="width: 15rem;">
+                <div class="card-body">
+                  <h6 class="card-title">Total recursos utilizados</h6>
+                  <h1 th:text="${DepartmentActiveCrewBy.totalResourcesUsed}">1000</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" th:src="@{/js/actions.js}"></script>
+</head>
+
+<body>
+
+    <section class="layout-content" layout:fragment="corpo">
+        <nav class="navbar navbar-expand-md bg-light">
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav">
+                    <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Lista de naves</li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="table-responsive">
+                <div th:replace="fragments/alert"></div>
+                <table class="table table-hover table-fixed">
+                    <thead>
+                        <tr>
+                            <th class="w-25">Nome</th>
+                            <th class="w-10 text-center">Nível</th>
+                            <th class="w-10 text-center">Tripulantes</th>
+                            <th class="w-10 text-center">Missões</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="s : ${ship}" >
+                            <td th:text="${s.shipName}"></td>
+                            <td class="text-center" th:text="${s.shipLevel}"></td>
+                            <td class="text-center" th:text="${s.crewCount}"></td>
+                            <td class="text-center" th:text="${s.missionCount}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="d-flex justify-content-center">
+                    <ul class="pagination">
+                        <li class="page-item"th:class="${page == 1} ? 'disabled-link'">
+                            <a class="page-link" th:href="@{listar(page=${page-1})}">Anterior</a>
+                        </li>
+                        <li class="page-item" th:class="${page == 1} ? 'active'">
+                            <a class="page-link" th:href="@{listar(page=1)}">1</a>
+                        </li>
+                        <li class="page-item" th:each="pageNumber : ${#numbers.sequence(2, totalPages)}" th:class="${page == pageNumber} ? 'active'">
+                            <a class="page-link" th:href="@{listar(page=${pageNumber})}">
+                                <span th:text="${pageNumber}"></span>
+                            </a>
+                        </li>
+                        <li class="page-item" th:class="${page == totalPages} ? 'disabled-link'">
+                            <a class="page-link" th:href="@{listar(page=${page+1})}">Próximo</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div th:replace="fragments/modal :: modal"></div>
+    </section>
+</body>
+</html>
